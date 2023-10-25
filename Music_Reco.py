@@ -61,7 +61,7 @@ def recommendation_artist_and_genre(data, artists, genres):
                     st.write(f"{song_name} par {artist_name}")
                     st.image(recommended_music_posters[idx], width=150)
         else:
-            st.write("Aucune recommandation trouvée pour les artistes et le genre sélectionnés.")
+            st.write("No recommendations found for selected artists and genre. Please try again.")
 
 
 
