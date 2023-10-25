@@ -51,13 +51,18 @@ def recommendation_artist_and_genre(data, artists, genres):
         recommended_music_posters = [get_song_album_cover_url(song, artist) for song, artist in zip(st.session_state.recommended_by_artist['Title'], st.session_state.recommended_by_artist['Artist'])]
 
         num_songs = len(recommended_music_names)
-        cols = st.columns(num_songs)
-        for idx in range(num_songs):
-            song_name = recommended_music_names[idx]
-            artist_name = st.session_state.recommended_by_artist.iloc[idx]['Artist']
-            with cols[idx]:
-                st.write(f"{song_name} par {artist_name}")
-                st.image(recommended_music_posters[idx], width=150)
+        
+        if num_songs > 0:
+            cols = st.columns(num_songs)
+            for idx in range(num_songs):
+                song_name = recommended_music_names[idx]
+                artist_name = st.session_state.recommended_by_artist.iloc[idx]['Artist']
+                with cols[idx]:
+                    st.write(f"{song_name} par {artist_name}")
+                    st.image(recommended_music_posters[idx], width=150)
+        else:
+            st.write("Aucune recommandation trouvée pour les artistes et le genre sélectionnés.")
+
 
 
 def recommendation_song_title(data, songs):
